@@ -42,12 +42,6 @@ public class Main {
                 3. Exit
                 """;
         System.out.println(menu);
-
-//        System.out.println("\nWelcome to Coworking Space Reservation System");
-//        System.out.println("1. Admin Login");
-//        System.out.println("2. User Login");
-//        System.out.println("3. Exit");
-//        System.out.print("Choose an option: ");
     }
 
     private static int getUserInput() {
@@ -68,13 +62,6 @@ public class Main {
                 Choose an option
                 """;
         System.out.println(adminMenu);
-
-//        System.out.println("\nAdmin Menu");
-//        System.out.println("1. Add a new coworking space");
-//        System.out.println("2. Remove a coworking space");
-//        System.out.println("3. View all reservations");
-//        System.out.println("4. Back to Main Menu");
-//        System.out.print("Choose an option: ");
 
         int choice = getUserInput();
 
@@ -106,14 +93,6 @@ public class Main {
                 5. Back to Main Menu
                 """;
         System.out.println(userMenu);
-
-//        System.out.println("\nCustomer Menu");
-//        System.out.println("1. Browse available spaces");
-//        System.out.println("2. Make a reservation");
-//        System.out.println("3. View my reservations");
-//        System.out.println("4. Cancel a reservation");
-//        System.out.println("5. Back to Main Menu");
-//        System.out.print("Choose an option: ");
 
         int choice = getUserInput();
 
