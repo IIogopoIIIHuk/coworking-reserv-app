@@ -19,14 +19,13 @@ public class UserService {
         }
     }
 
-    public void makeReservation(Scanner scanner) {
+    public void makeReservation(Scanner scanner) throws InvalidReservationException{
         System.out.print("Enter Workspace ID to reserve: ");
         int workspaceId = scanner.nextInt();
 
         Workspace workspace = findWorkspaceById(workspaceId);
         if (workspace == null || !workspace.isAvailable()) {
-            System.out.println("Invalid Workspace ID or not available.");
-            return;
+            throw new InvalidReservationException("Invalid Workspace ID or Workspace not available.");
         }
 
         System.out.print("Enter your name: ");

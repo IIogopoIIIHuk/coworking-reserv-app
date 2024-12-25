@@ -9,6 +9,9 @@ public class Main {
     private static int reservationIdCounter = 1;
 
     public static void main(String[] args) {
+        FileService fileService = new FileService();
+        fileService.loadApplicationState(workspaces, reservations);
+
         AdminService adminService = new AdminService(workspaces, reservations);
         UserService userService = new UserService(workspaces, reservations, reservationIdCounter);
 
@@ -25,6 +28,7 @@ public class Main {
                     userMenu(userService);
                     break;
                 case 3:
+                    fileService.saveApplicationState(workspaces, reservations);
                     running = false;
                     System.out.println("Exiting... Goodbye!");
                     break;
@@ -88,7 +92,7 @@ public class Main {
                 Customer Menu
                 1. Browse available spaces
                 2. Make a reservation
-                3. View ny reservation
+                3. View my reservation
                 4. Cancel a reservation
                 5. Back to Main Menu
                 """;
@@ -101,7 +105,11 @@ public class Main {
                 userService.browseSpaces();
                 break;
             case 2:
-                userService.makeReservation(scanner);
+                try {
+                    userService.makeReservation(scanner);
+                }catch (InvalidReservationException e){
+                    System.out.println(e.getMessage());
+                }
                 break;
             case 3:
                 userService.viewUserReservations(scanner);

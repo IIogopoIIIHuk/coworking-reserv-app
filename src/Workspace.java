@@ -1,4 +1,6 @@
-public class Workspace {
+import java.io.Serializable;
+
+public class Workspace implements Serializable {
     private int id;
     private String type;
     private double price;
