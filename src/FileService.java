@@ -4,9 +4,8 @@ import java.util.ArrayList;
 public class FileService extends Exception{
 
     public void saveApplicationState(ArrayList<Workspace> workspaces, ArrayList<Reservation> reservations){
-        try {
-            ObjectOutputStream workspaceOut = new ObjectOutputStream(new FileOutputStream("workspaces.bin"));
-            ObjectOutputStream reservationOut = new ObjectOutputStream(new FileOutputStream("reservations.bin"));
+        try (ObjectOutputStream workspaceOut = new ObjectOutputStream(new FileOutputStream("workspaces.bin"));
+            ObjectOutputStream reservationOut = new ObjectOutputStream(new FileOutputStream("reservations.bin"))){
 
             workspaceOut.writeObject(workspaces);
             reservationOut.writeObject(reservations);
