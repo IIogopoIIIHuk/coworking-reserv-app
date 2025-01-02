@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdminService {
-    private final ArrayList<Workspace> workspaces;
+    private final CustomList<Workspace> workspaces;
     private final ArrayList<Reservation> reservations;
 
-    public AdminService(ArrayList<Workspace> workspaces, ArrayList<Reservation> reservations) {
+    public AdminService(CustomList<Workspace> workspaces, ArrayList<Reservation> reservations) {
         this.workspaces = workspaces;
         this.reservations = reservations;
     }
@@ -23,13 +23,30 @@ public class AdminService {
 
         workspaces.add(new Workspace(id, type, price));
         System.out.println("Workspace added successfully!");
+
+        System.out.println("Current workspaces:");
+        for (Workspace workspace : workspaces.toArrayList()) {
+            System.out.println(workspace);
+        }
     }
 
     public void removeWorkspace(Scanner scanner) {
         System.out.print("Enter Workspace ID to remove: ");
         int id = scanner.nextInt();
-        workspaces.removeIf(workspace -> workspace.getId() == id);
-        System.out.println("Workspace removed successfully!");
+        Workspace toRemove = null;
+
+        for (int i = 0; i < workspaces.size(); i++){
+            if (workspaces.get(i).getId() == id){
+                toRemove = workspaces.get(i);
+                break;
+            }
+        }
+        if (toRemove != null){
+            workspaces.remove(toRemove);
+            System.out.println("Workspace removed successfully");
+        }else {
+            System.out.println("Workspace ID not found");
+        }
     }
 
     public void viewAllReservations() {

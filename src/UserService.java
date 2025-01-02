@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserService {
-    private final ArrayList<Workspace> workspaces;
+    private final CustomList<Workspace> workspaces;
     private final ArrayList<Reservation> reservations;
     private int reservationIdCounter;
 
-    public UserService(ArrayList<Workspace> workspaces, ArrayList<Reservation> reservations, int reservationIdCounter) {
+    public UserService(CustomList<Workspace> workspaces, ArrayList<Reservation> reservations, int reservationIdCounter) {
         this.workspaces = workspaces;
         this.reservations = reservations;
         this.reservationIdCounter = reservationIdCounter;
@@ -14,7 +14,7 @@ public class UserService {
 
     public void browseSpaces() {
         System.out.println("\nAvailable Workspaces:");
-        for (Workspace workspace : workspaces) {
+        for (Workspace workspace : workspaces.toArrayList()) {
             System.out.println(workspace);
         }
     }
@@ -57,6 +57,11 @@ public class UserService {
     }
 
     public void cancelReservation(Scanner scanner) {
+        System.out.println("Current Reservations:");
+        for (Reservation reservation : reservations) {
+            System.out.println(reservation);
+        }
+
         System.out.print("Enter Reservation ID to cancel: ");
         int reservationId = scanner.nextInt();
 
@@ -75,7 +80,7 @@ public class UserService {
     }
 
     private Workspace findWorkspaceById(int id) {
-        for (Workspace workspace : workspaces) {
+        for (Workspace workspace : workspaces.toArrayList()) {
             if (workspace.getId() == id) {
                 return workspace;
             }

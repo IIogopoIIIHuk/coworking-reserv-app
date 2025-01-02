@@ -3,14 +3,14 @@ import java.util.Scanner;
 
 
 public class Main {
-    private static final ArrayList<Workspace> workspaces = new ArrayList<>();
+    private static final CustomList<Workspace> workspaces = new CustomList<>();
     private static final ArrayList<Reservation> reservations = new ArrayList<>();
     private static final Scanner scanner = new Scanner(System.in);
     private static int reservationIdCounter = 1;
 
     public static void main(String[] args) {
         FileService fileService = new FileService();
-        fileService.loadApplicationState(workspaces, reservations);
+        fileService.loadApplicationState(workspaces.toArrayList(), reservations);
 
         AdminService adminService = new AdminService(workspaces, reservations);
         UserService userService = new UserService(workspaces, reservations, reservationIdCounter);
@@ -28,7 +28,7 @@ public class Main {
                     userMenu(userService);
                     break;
                 case 3:
-                    fileService.saveApplicationState(workspaces, reservations);
+                    fileService.saveApplicationState(workspaces.toArrayList(), reservations);
                     running = false;
                     System.out.println("Exiting... Goodbye!");
                     break;
