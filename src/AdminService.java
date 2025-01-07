@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class AdminService {
@@ -33,26 +34,18 @@ public class AdminService {
     public void removeWorkspace(Scanner scanner) {
         System.out.print("Enter Workspace ID to remove: ");
         int id = scanner.nextInt();
-        Workspace toRemove = null;
 
-        for (int i = 0; i < workspaces.size(); i++){
-            if (workspaces.get(i).getId() == id){
-                toRemove = workspaces.get(i);
-                break;
-            }
-        }
-        if (toRemove != null){
-            workspaces.remove(toRemove);
-            System.out.println("Workspace removed successfully");
-        }else {
-            System.out.println("Workspace ID not found");
-        }
+
+        Optional<Workspace> workspaceToRemove = workspaces.toArrayList().stream()
+                .filter(workspace -> workspace.getId() == id)
+                .findFirst();
+
+        workspaceToRemove.ifPresentOrElse(workspaces::remove, () -> System.out.println("Workspace ID not found"));
     }
 
     public void viewAllReservations() {
         System.out.println("\nAll Reservations:");
-        for (Reservation reservation : reservations) {
-            System.out.println(reservation);
-        }
+        reservations.stream()
+                .forEach(System.out::println);
     }
 }
