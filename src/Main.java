@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class Main {
     private static final CustomList<Workspace> workspaces = new CustomList<>();
     private static final ArrayList<Reservation> reservations = new ArrayList<>();

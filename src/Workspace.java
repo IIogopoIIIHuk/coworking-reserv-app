@@ -1,5 +1,14 @@
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
 import java.io.Serializable;
 
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Workspace implements Serializable {
     private int id;
     private String type;
@@ -10,31 +19,5 @@ public class Workspace implements Serializable {
         this.id = id;
         this.type = type;
         this.price = price;
-        this.isAvailable = true;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
-    }
-
-    @Override
-    public String toString() {
-        return "ID: " + id + ", Type: " + type + ", Price: " + price + ", Available: " + isAvailable;
     }
 }
