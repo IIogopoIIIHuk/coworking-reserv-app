@@ -1,8 +1,12 @@
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class FileService extends Exception{
+
 
     public void saveApplicationState(List<Workspace> workspaces, ArrayList<Reservation> reservations){
         try (ObjectOutputStream workspaceOut = new ObjectOutputStream(new FileOutputStream("workspaces.bin"));
@@ -10,7 +14,7 @@ public class FileService extends Exception{
 
             workspaceOut.writeObject(workspaces);
             reservationOut.writeObject(reservations);
-            System.out.println("Application state saved.");
+            log.info("Application state saved");
         }catch (IOException e){
             System.out.println("Error saving application state: " + e.getMessage());
         }
