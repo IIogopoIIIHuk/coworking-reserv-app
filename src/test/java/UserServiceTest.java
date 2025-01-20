@@ -19,7 +19,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void testMakeReservation() throws Exception {
+    void givenValidInput_whenMakeReservation_thenReservationIsMade() throws Exception {
         Workspace workspace = new Workspace(1, "Office", 200.0, true);
         workspaces.add(workspace);
 
@@ -32,7 +32,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void testMakeReservationInvalid() {
+    void givenInvalidWorkspace_whenMakeReservation_thenThrowsInvalidReservationException() {
         Workspace workspace = new Workspace(1, "Office", 200.0, false);
         workspaces.add(workspace);
 
@@ -43,7 +43,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void testCancelReservation() {
+    void givenExistingReservation_whenCancelReservation_thenReservationIsCancelled() {
         Workspace workspace = new Workspace(1, "Office", 200.0, false);
         workspaces.add(workspace);
         Reservation reservation = new Reservation(1, 1, "John", "2025-01-15", "10:00-11:00");

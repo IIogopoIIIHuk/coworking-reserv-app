@@ -19,7 +19,7 @@ public class FileServiceTest {
     }
 
     @Test
-    void testSaveAndLoadApplicationState() {
+    void givenWorkspacesAndReservations_whenSaveAndLoadApplicationState_thenStateIsPersisted() {
         Workspace workspace = new Workspace(1, "Office", 200.0, true);
         Reservation reservation = new Reservation(1, 1, "John", "2025-01-15", "10:00-11:00");
         workspaces.add(workspace);
