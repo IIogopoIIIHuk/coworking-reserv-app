@@ -1,6 +1,13 @@
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.*;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +17,7 @@ public class FileService extends Exception{
 
     public void saveApplicationState(List<Workspace> workspaces, ArrayList<Reservation> reservations){
         try (ObjectOutputStream workspaceOut = new ObjectOutputStream(new FileOutputStream("workspaces.bin"));
-            ObjectOutputStream reservationOut = new ObjectOutputStream(new FileOutputStream("reservations.bin"))){
+             ObjectOutputStream reservationOut = new ObjectOutputStream(new FileOutputStream("reservations.bin"))){
 
             workspaceOut.writeObject(workspaces);
             reservationOut.writeObject(reservations);
