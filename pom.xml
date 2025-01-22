@@ -23,6 +23,13 @@
             <artifactId>junit-jupiter</artifactId>
             <version>5.11.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.4</version>
+        </dependency>
+
     </dependencies>
 
     <build>
